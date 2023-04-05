@@ -1,0 +1,34 @@
+. Create directories for tests from the project root directory. The directory containing the `pom.xml` file is the project root directory.
++
+.Syntax
+[source,options="nowrap",subs=+quotes]
+----
+$ mkdir -p src/test/java/__<path_based_on_artifactID>__
+----
++
+.Example
+[source,options="nowrap"]
+----
+$ mkdir -p src/test/java/com/example/app
+----
+
+. Navigate to the new directory.
++
+.Syntax
+[source,options="nowrap",subs=+quotes]
+----
+$ cd src/test/java/<path_based_on_artifactID>
+----
++
+.Example
+[source,options="nowrap"]
+----
+$ cd src/test/java/com/example/app
+----
+
+. Create a file `HelloWorldServletIT.java` with the following content. If you used an `artifactID` different from `com.example.app`, change the package name to match the `artifactID`.
++
+[source,java,options="nowrap"]
+----
+include::simple-webapp-example/src/test/java/com/example/app/HelloWorldServletIT.java[]
+----

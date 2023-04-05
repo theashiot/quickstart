@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example.app</groupId>
+  <artifactId>simple-webapp-example</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>simple-webapp-example Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+
+  <properties>
+<!-- tag::pomProperties[] -->
+    <!-- Define the  common values to use  in the POM.
+         You can access these values in the form ${property.name}.
+         For example, <version.server> is accessed as ${version.server}
+     -->
+    
+    <!-- Define the version of the BOM (Bill Of Materials)
+         The WildFly BOMs includes dependency management
+         compatible with WildFly. These files manage the
+         version of the dependencies you may need to build,
+         test or debug your project, ensuring you always
+         get a compatible stack. For more information, see:
+         https://github.com/wildfly/boms.               -->
+    <version.server.bom>28.0.0.Beta1</version.server.bom>
+    <version.cloud.fp>2.0.0.Final</version.cloud.fp>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+<!-- end::pomProperties[] -->
+<!-- tag::pomTestsProperties[] -->
+    <version.failsafe.plugin>3.0.0</version.failsafe.plugin>
+<!-- end::pomTestsProperties[] -->
+<!-- tag::pomMavenPluginProperties[] -->
+    <!-- Define the version of the Maven plugin to provision a server.   -->
+    <version.wildfly.maven.plugin>4.0.0.Final</version.wildfly.maven.plugin>
+    
+    <!-- Define the version of the server to provision. -->
+    <version.server>28.0.0.Beta1</version.server>
+<!-- end::pomMavenPluginProperties[] -->
+  </properties>
+
+<!-- tag::pomRepositories[] -->
+  <repositories>
+    <repository>
+      <id>jboss-public-maven-repository</id>
+      <name>JBoss Public Maven Repository</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+       </snapshots>
+         <layout>default</layout>
+    </repository>
+    <repository>
+      <id>redhat-ga-maven-repository</id>
+      <name>Red Hat GA Maven Repository</name>
+      <url>https://maven.repository.redhat.com/ga/</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </snapshots>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+<!-- end::pomRepositories[] -->
+
+<!-- tag::pomPluginRepositories[] -->
+  <pluginRepositories>
+    <!-- keep this repository the first -->
+    <pluginRepository>
+      <id>jboss-public-maven-repository</id>
+      <name>JBoss Public Maven Repository</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+
+    <pluginRepository>
+      <id>redhat-ga-maven-repository</id>
+      <name>Red Hat GA Maven Repository</name>
+      <url>https://maven.repository.redhat.com/ga/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+   </pluginRepository>
+  </pluginRepositories>
+<!-- end::pomPluginRepositories[] -->
+
+<!-- tag::pomDependencyManagement[] -->
+  <dependencyManagement>
+    <dependencies>
+      <!-- importing the jakartaee8-with-tools BOM adds specs and other useful artifacts as managed dependencies -->
+      <dependency>
+        <groupId>org.wildfly.bom</groupId>
+        <artifactId>wildfly-ee-with-tools</artifactId>
+        <version>${version.server.bom}</version>
+        <type>pom</type>
+        <scope>import</scope>
+     </dependency>
+    </dependencies>
+  </dependencyManagement>
+<!-- end::pomDependencyManagement[] -->
+
+    <dependencies>
+<!-- tag::pomDependencies[] -->
+        <!-- Import the CDI API, we use provided scope as the API is included in WildFly -->
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Import the Common Annotations API (JSR-250), we use provided scope
+        as the API is included in WildFly -->
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Import the Servlet API, we use provided scope as the API is included in {ProductShortname} -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+<!-- end::pomDependencies[] -->
+<!-- tag::pomTestsDependencies[] -->
+        <!-- Tests -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.container</groupId>
+            <artifactId>arquillian-container-test-api</artifactId>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.protocol</groupId>
+            <artifactId>arquillian-protocol-servlet</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.arquillian</groupId>
+            <artifactId>wildfly-arquillian-common</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.arquillian</groupId>
+            <artifactId>wildfly-arquillian-container-managed</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+<!-- end::pomTestsDependencies[] -->
+  </dependencies>
+
+<!-- tag::pomBuild[] -->
+    <build>
+    <finalName>${project.artifactId}</finalName>
+      <plugins>
+        <plugin>
+          <groupId>org.wildfly.plugins</groupId>
+          <artifactId>wildfly-maven-plugin</artifactId>
+         <version>2.1.0.Final</version>
+        </plugin>
+      </plugins>
+  </build>
+<!-- end::pomBuild[] -->
+
+<profiles>
+<!-- tag::pomTestsProfile[] -->
+    <profile>
+            <id>arq-remote</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${version.failsafe.plugin}</version>
+                        <configuration>
+                            <includes>
+                                <include>**/HelloWorldServletIT</include>
+                            </includes>
+                            <!--<excludes>
+                                <exclude>**/managed/*</exclude>
+                            </excludes> -->
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+     </profile>
+<!-- end::pomTestsProfile[] -->
+<!-- tag::pomProvisionedServerProfileStart[] -->
+  <profile>
+    <id>provisioned-server</id>
+    <build>
+      <plugins>
+<!-- end::pomProvisionedServerProfileStart[] -->      
+<!-- tag::pomProvisionedServerMavenPlugin[] -->
+        <plugin>
+          <groupId>org.wildfly.plugins</groupId>
+          <artifactId>wildfly-maven-plugin</artifactId>
+          <version>${version.wildfly.maven.plugin}</version>
+          <configuration>
+            <feature-packs>
+              <feature-pack>
+                <location>org.wildfly:wildfly-galleon-pack:${version.server}</location>
+              </feature-pack>
+            </feature-packs>
+            <layers>
+            <!-- layers may be used to customize the server to provision-->
+              <layer>cloud-server</layer>
+            </layers>
+            <!-- deploys the application on root web context -->
+            <runtimeName>ROOT.war</runtimeName>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>package</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+<!-- end::pomProvisionedServerMavenPlugin[] -->
+<!-- tag::pomProvisionedServerTest[] -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${version.failsafe.plugin}</version>
+          <configuration>
+            <environmentVariables>
+              <JBOSS_HOME>${project.build.directory}/server</JBOSS_HOME>
+            </environmentVariables>
+            <includes>
+              <include>**/managed/*</include>
+            </includes>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+<!-- end::pomProvisionedServerTest[] -->
+<!-- tag::pomProvisionedServerProfileEnd[] -->
+      </plugins>
+    </build>
+  </profile>
+<!-- end::pomProvisionedServerProfileEnd[] -->
+</profiles>
+
+</project>

@@ -1,0 +1,164 @@
+:_content-type: PROCEDURE
+
+[id="creating-a-maven-project-for-a-simple-web-application-with-server-provisioning_{context}"]
+= Creating a Maven project for a simple web application with server provisioning
+
+For creating a simple web-application with a provisioned server, create a Maven project with the required dependencies and the directory structure.
+
+[IMPORTANT]
+====
+Do not copy `...` from the XML snippets in the procedure. If you do, the Maven build fails with the following error:
+
+[source]
+----
+[INFO] Scanning for projects...
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-parseable POM pom.xml: expected START_TAG or END_TAG not TEXT
+...
+----
+====
+.Prerequisites
+
+* You have installed Maven. For more information, see link:https://maven.apache.org/download.cgi[Downloading Apache Maven].
+
+.Procedure
+
+. Set up a Maven project using the `mvn` command. The command creates the directory structure for the project and the `pom.xml` configuration file.
++
+.Syntax
+[source,options="nowrap",subs=+quotes]
+----
+$ mvn archetype:generate \
+-DgroupId=__${group-to-which-your-application-belongs}__ \
+-DartifactId=__${name-of-your-application}__ \
+-DarchetypeGroupId=org.apache.maven.archetypes \
+-DarchetypeArtifactId=maven-archetype-webapp \
+-DinteractiveMode=false
+----
++
+.Example
+[source,options="nowrap"]
+----
+$ mvn archetype:generate \
+-DgroupId=com.example.app \
+-DartifactId=simple-webapp-example \
+-DarchetypeGroupId=org.apache.maven.archetypes \
+-DarchetypeArtifactId=maven-archetype-webapp \
+-DinteractiveMode=false
+----
++
+This creates the the directory structure for the application, and also the `pom.xml` file. The application's root directory name is the same as the `artifactId`. In the example, the directory is called `simple-webapp-example`.
+
+. Navigate to the application's root directory:
++
+.Syntax
+[source,options="nowrap",subs=+quotes]
+----
+$ cd __<name-of-your-application>__
+----
++
+.Example
+[source,options="nowrap"]
+----
+$ cd simple-webapp-example
+----
+
+. Update the content of the generated `pom.xml`.
+
+.. Set the following properties:
++
+[source,xml,options="nowrap"]
+----
+<properties>
+include::simple-webapp-example/pom.xml[tag=pomProperties]
+</properties>
+----
+
+.. Add the following repositories:
++
+[source,xml,options="nowrap"]
+----
+include::simple-webapp-example/pom.xml[tag=pomRepositories]
+----
+
+.. Add the following plugin repositories:
++
+[source,xml,options="nowrap"]
+----
+include::simple-webapp-example/pom.xml[tag=pomPluginRepositories]
+----
+
+.. Add the following dependency management:
++
+[source,xml,options="nowrap"]
+----
+include::simple-webapp-example/pom.xml[tag=pomDependencyManagement]
+----
+
+.. Update the dependencies to look like this:
++
+[source,xml,options="nowrap"]
+----
+<dependencies>
+include::simple-webapp-example/pom.xml[tag=pomDependencies]
+</dependencies>
+----
+
+. Create a Maven profile for server provisioning. 
+
+.. Update the `<proprties>` element by defining the version of the fail-safe plugin and maven plugin.
++
+[source,xml,options="nowrap"]
+----
+<properties>
+...
+include::simple-webapp-example/pom.xml[tag=pomTestsProperties]
+include::simple-webapp-example/pom.xml[tag=pomMavenPluginProperties]
+</properties>
+----
+
+.. Add dependencies for server provisioning.
++
+[source,xml,options="nowrap"]
+----
+<profiles>
+...
+include::simple-webapp-example/pom.xml[tag=pomProvisionedServerProfileStart]
+include::simple-webapp-example/pom.xml[tag=pomProvisionedServerMavenPlugin]
+include::simple-webapp-example/pom.xml[tag=pomProvisionedServerProfileEnd]
+</profiles>
+----
+
+. Remove the `<build>` element with its contents.
+
+////
+.. Update the build element:
++
+[source,xml,options="nowrap"]
+----
+include::simple-webapp-example/pom.xml[tag=pomBuild]
+----
+////
+.Verification
+
+* In the application root directory, enter the following command:
++
+[source,options="nowrap"]
+----
+$ mvn install
+----
++
+You get an output similar to the following:
++
+[source,options="nowrap"]
+----
+...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.795 s
+[INFO] Finished at: 2022-04-28T17:39:48+05:30
+[INFO] ------------------------------------------------------------------------
+----
+
+You can now create a web-application.

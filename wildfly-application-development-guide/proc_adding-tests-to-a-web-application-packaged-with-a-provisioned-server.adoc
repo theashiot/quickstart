@@ -1,0 +1,37 @@
+:_content-type: PROCEDURE
+
+[id="adding-tests-to-a-web-application-packaged-with-a-provisioned-server_{context}"]
+= Adding tests to a web application packaged with a provisioned server
+
+After you have created a web application, it is important that you add tests to it.
+
+.Prerequisites
+
+* You have successfully compiled and deployed a web application.
+
+.Procedure
+
+include::frag_adding-tests-pom-common.adoc[]
+
+. Update the `<plugins>` element in the `provisioned-server` profile with the `maven-failsafe-plugin` plugin.
++
+[source,xml,options="nowrap"]
+----
+include::simple-webapp-example/pom.xml[tag=pomProvisionedServerProfileStart]
+        ...
+include::simple-webapp-example/pom.xml[tag=pomProvisionedServerTest]
+
+include::simple-webapp-example/pom.xml[tag=pomProvisionedServerProfileEnd]
+        
+----
+
+include::frag_adding-tests-crating-java-file-common.adoc[]
+
+.Verification
+
+* Run the tests.
++
+[source,options="nowrap"]
+----
+$ mvn clean verify -Pprovisioned-server
+----

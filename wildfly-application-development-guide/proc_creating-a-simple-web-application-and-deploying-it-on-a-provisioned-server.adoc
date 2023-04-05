@@ -1,0 +1,40 @@
+:_content-type: PROCEDURE
+
+[id="creating-a-simple-web-application-and-deploying-it-on-a-provisioned-server_{context}"]
+= Creating a simple web application and deploying it on a provisioned server
+Create a web application containing a servlet that returns "Hello world!" when accessed. The application is deployed on a provisioned server.
+
+In this procedure, __<application_home>__ refers to the directory that contains the  `pom.xml` configuration file for the application.
+
+.Prerequisites
+
+* You have created a Maven project defining Galleon provisioning.
++
+For more information, see xref:creating-a-maven-project-for-a-simple-web-application-with-server-provisioning_creating-a-hello-world-application-with-server-provisioning-from-scratch[Creating a Maven project for a simple web application with server provisioning].
+
+.Procedure
+
+include::frag_creating-simple-web-application-common.adoc[]
+
+. Provision a server with the application deployed from __<application_home>__.
++
+[source,options="nowrap"]
+----
+$ mvn wildfly:run -Pprovisioned-server
+----
+
+.Verification
+
+* Navigate to `http://localhost:8080/helloworld` in a browser.
++
+You get the following message:
++
+[source,option="nowrap"]
+----
+Hello, world!
+----
+
+[role="_additional-resources"]
+.Additional resources
+* link:https://jakarta.ee/specifications/servlet/[Jakarta Servlet specification]
+

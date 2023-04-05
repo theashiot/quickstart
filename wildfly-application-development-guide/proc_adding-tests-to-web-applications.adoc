@@ -1,0 +1,53 @@
+:_content-type: PROCEDURE
+
+[id="adding-tests-to-web-applications_{context}"]
+= Adding tests to web applications
+
+After you have created a web application, it is important that you add tests to it.
+
+.Prerequisites
+
+* You have successfully compiled and deployed a web application.
+
+.Procedure
+
+include::frag_adding-tests-pom-common.adoc[]
+
+. Add dependencies for tests in the `pom.xml` configuration file.
++
+[source,xml,options="nowrap"]
+----
+<dependencies>
+...
+include::simple-webapp-example/pom.xml[tag=pomTestsDependencies]
+</dependencies>
+----
+
+
+. Add a test profile for Arquilian test.
++
+[source,xml,options="nowrap"]
+----
+<profiles>
+include::simple-webapp-example/pom.xml[tag=pomTestsProfile]
+</profiles>
+----
+
+include::frag_adding-tests-crating-java-file-common.adoc[]
+
+.Verification
+
+* Run the tests.
++
+[source,options="nowrap"]
+----
+$ mvn verify -Parq-remote
+----
+
+////
+[role="_additional-resources"]
+.Additional resources
+* A bulleted list of links to other closely-related material. These links can include `link:` and `xref:` macros.
+* For more details on writing procedure modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+* Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+////

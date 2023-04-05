@@ -1,0 +1,9 @@
+. Define the version of the fail-safe plugin.
++
+[source,xml,options="nowrap"]
+----
+<dependencies>
+...
+include::simple-webapp-example/pom.xml[tag=pomTestsProperties]
+</dependencies>
+----

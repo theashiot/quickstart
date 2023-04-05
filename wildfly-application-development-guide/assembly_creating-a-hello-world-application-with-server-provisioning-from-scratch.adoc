@@ -1,0 +1,34 @@
+ifdef::context[:parent-context-of-creating-a-hello-world-application-with-server-provisioning-from-scratch: {context}]
+
+:_content-type: ASSEMBLY
+
+ifndef::context[]
+[id="creating-a-hello-world-application-with-server-provisioning-from-scratch"]
+endif::[]
+ifdef::context[]
+[id="creating-a-hello-world-application-with-server-provisioning-from-scratch_{context}"]
+endif::[]
+
+= Creating a hello world application with server provisioning from scratch
+
+:context: creating-a-hello-world-application-with-server-provisioning-from-scratch
+
+With the advent of Galleon server provisioning, installing {ProductShortname} is no longer required before you start developing applications. By using the WildFly Maven plugin, you can package your application in a Galleon provisioned server. You can deploy, redeploy, undeploy or run your application on the provisioned server. For information about WildFly Maven plugin, see link:https://docs.wildfly.org/wildfly-maven-plugin/index.html[WildFly Maven Plugin (wildfly-maven-plugin)].
+
+Use the following procedures to create a simple "Hello World" application packaged in a Galleon provisioned server and access the application in a browser:
+
+* proc:adding-tests-to-a-web-application-packaged-with-a-provisioned-server_creating-a-hello-world-application-with-server-provisioning-from-scratch[Adding tests to a web application packaged with a provisioned server]
+
+* xref:creating-a-maven-project-for-a-simple-web-application-with-server-provisioning_creating-a-hello-world-application-with-server-provisioning-from-scratch[Create a Maven project for a simple web application with server provisioning]
+* xref:creating-a-maven-project-for-a-simple-web-application-with-server-provisioning_creating-a-hello-world-application-with-server-provisioning-from-scratch[Create a simple web application]
+
+After you have deployed your application, you add tests to it. You can add a simple test using the following procedure:
+
+include::proc_creating-a-maven-project-for-a-simple-web-application-with-server-provisioning.adoc[leveloffset=+1]
+
+include::proc_creating-a-simple-web-application-and-deploying-it-on-a-provisioned-server.adoc[leveloffset=+1]
+
+include::proc_adding-tests-to-a-web-application-packaged-with-a-provisioned-server.adoc[leveloffset=+1]
+
+ifdef::parent-context-of-creating-a-hello-world-application-with-server-provisioning-from-scratch[:context: {parent-context-of-creating-a-hello-world-application-with-server-provisioning-from-scratch}]
+ifndef::parent-context-of-creating-a-hello-world-application-with-server-provisioning-from-scratch[:!context:]
