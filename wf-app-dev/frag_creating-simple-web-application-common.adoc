@@ -1,0 +1,63 @@
+. Create a directory to store the Java files. The path in the command below is relative to __<application_home>__.
++
+.Syntax
+[source,options="nowrap",subs=+quotes]
+----
+$ mkdir -p src/main/java/<path_based_on_artifactID>
+----
++
+.Example with artifactID com.example.app
+[source,options="nowrap",subs=+quotes]
+----
+$ mkdir -p src/main/java/com/example/app
+----
+
+. Navigate to the new directory.
++
+.Syntax
+[source,options="nowrap",subs=+quotes]
+----
+$ cd src/main/java/<path_based_on_artifactID>
+----
++
+.Example with artifactID com.example.app
+[source,options="nowrap"]
+----
+$ cd src/main/java/com/example/app
+----
+
+. Create a file `HelloWorld.java` Servlet.
+
++
+[source,java,options="nowrap"]
+----
+include::../helloworld/src/main/java/org/jboss/as/quickstarts/helloworld/HelloWorldServlet.java[lines=17..37;41..63]
+----
+
+. Create a CDI service that return "Hello " with the value of the name. 
+
++
+[source,java,options="nowrap"]
+----
+include::../helloworld/src/main/java/org/jboss/as/quickstarts/helloworld/HelloService.java[lines=17..20;24..31]
+----
+
+
+. Compile your application with the following command in __<application_home>__:
++
+[source,options="nowrap"]
+----
+$ mvn package
+----
++
+.Example output
+[source,options="nowrap"]
+----
+...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.015 s
+[INFO] Finished at: 2022-04-28T17:48:53+05:30
+[INFO] ------------------------------------------------------------------------
+----

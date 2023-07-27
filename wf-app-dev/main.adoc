@@ -1,0 +1,11 @@
+include::attributes.adoc[]
+
+:toc:
+:numbered:
+= Getting started developing applications for {ProductShortname}
+
+{ProductShortname} is a powerful, modular, and lightweight application server that helps you build amazing applications. {ProductShortname} implements the latest in enterprise Java standards from Jakarta EE and Eclipse MicroProfile.
+
+To get started with developing applications for deployment on {ProductShortname}, all you need is a supported JDK (Java Development Kit) and Maven installed. You can optionally install {ProductShortname}, but it is not strictly required. If you do not install {ProductShortname}, you can use the WildFly Maven plugin to package your application in a Galleon provisioned server. You can deploy, redeploy, undeploy or run your application on the provisioned server.
+
+include::assembly_creating-a-hello-world-application-from-scratch.adoc[leveloffset=+1]

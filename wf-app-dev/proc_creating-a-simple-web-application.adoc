@@ -1,0 +1,38 @@
+:_content-type: PROCEDURE
+
+[id="creating-a-simple-web-application_{context}"]
+= Creating a simple web application
+
+Create a web application containing a servlet that returns "Hello world!" when accessed.
+
+In this procedure, __<application_home>__ refers to the directory that contains the  `pom.xml` configuration file for the application.
+
+.Prerequisites
+
+* You have created a Maven project.
++
+For more information, see xref:creating-a-maven-project-for-a-simple-web-application_creating-a-hello-world-application-from-scratch[Creating a Maven project for a simple web application].
+
+* {ProductShortname} is running.
+
+.Procedure
+
+include::frag_creating-simple-web-application-common.adoc[]
+
+. Deploy the application from __<application_home>__.
++
+[source,options="nowrap"]
+----
+$ mvn wildfly:deploy
+----
+
+.Verification
+
+* Navigate to `http://localhost:8080/simple-webapp-example/` in a browser.
++
+You get the following message:
++
+[source,option="nowrap"]
+----
+Hello World!
+----
