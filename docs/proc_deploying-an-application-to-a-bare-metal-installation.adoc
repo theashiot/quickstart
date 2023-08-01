@@ -1,0 +1,36 @@
+:_content-type: PROCEDURE
+
+[id="deploying-an-application-to-a-bare-metal-installation_{context}"]
+= Deploying an application to a bare metal installation
+
+[role="_abstract"]
+You can deploy an application to {ProductShortname} by using the {ProductShortname} deploy plugin.
+
+.Prerequisites
+
+* You have created an application.
+* {ProductShortname} is running.
+
+.Procedure
+
+. Navigate to the application root.
+
+. Deploy the application by using the {ProductShortname} deploy plugin.
++
+[source,options="nowrap"]
+----
+$ mvn wildfly:deploy
+----
+
+.Verification
+
+* Navigate to the address `http://locahlhost:8080/{helloworld-QS-artifactId}` in a browser.
+
+////
+[role="_additional-resources"]
+.Additional resources
+
+* This section is optional.
+* Provide a bulleted list of links to other closely-related material. These links can include `link:` and `xref:` macros.
+* Use an unnumbered bullet (*) if the list includes only one step.
+////

@@ -1,0 +1,44 @@
+ifdef::context[:parent-context-of-testing-applications-deployed-to-the-server: {context}]
+
+:_content-type: ASSEMBLY
+
+ifndef::context[]
+[id="testing-applications-deployed-to-the-server"]
+endif::[]
+ifdef::context[]
+[id="testing-applications-deployed-to-the-server_{context}"]
+endif::[]
+= Testing applications deployed to the server
+
+:context: testing-applications-deployed-to-the-server
+
+[role="_abstract"]
+This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on.
+
+== Prerequisites
+
+* A bulleted list of conditions that must be satisfied before the user starts following this assembly.
+* You can also link to other modules or assemblies the user must follow before starting this assembly.
+* Delete the section title and bullets if the assembly has no prerequisites.
+* X is installed. For information about installing X, see <link>.
+* You can log in to X with administrator privileges.
+
+Include modules here.
+
+[role="_additional-resources"]
+== Next steps
+
+* This section is optional.
+* Provide a bulleted list of links that contain instructions that might be useful to the user after they complete this procedure.
+* Use an unnumbered bullet (*) if the list includes only one step.
+
+[role="_additional-resources"]
+== Additional resources
+
+* This section is optional.
+* Provide a bulleted list of links to other closely-related material. These links can include `link:` and `xref:` macros.
+* Use an unnumbered bullet (*) if the list includes only one step.
+
+ifdef::parent-context-of-testing-applications-deployed-to-the-server[:context: {parent-context-of-testing-applications-deployed-to-the-server}]
+ifndef::parent-context-of-testing-applications-deployed-to-the-server[:!context:]
+

@@ -1,0 +1,41 @@
+ifdef::context[:parent-context-of-creating-a-hello-world-application-with-servlet-and-cdi: {context}]
+
+:_content-type: ASSEMBLY
+
+ifndef::context[]
+[id="creating-a-hello-world-application-with-servlet-and-cdi"]
+endif::[]
+ifdef::context[]
+[id="creating-a-hello-world-application-with-servlet-and-cdi_{context}"]
+endif::[]
+
+= Creating a Hello World application with Servlet and CDI
+
+:context: creating-a-hello-world-application-with-servlet-and-cdi
+
+[role="_abstract"]
+The best way to get familiar with a new programming language or a technology is to create a Hello World application.
+{ProductShortname} provides a `{helloworld-QS} quickstart` to help you deploy a basic application to {ProductShortname}.
+
+There are two ways in which you can use the quickstart:
+
+* Deploy the provided quickstart directly.
++
+Use this option to see the application in action.
++
+The quickstart is available at link:{helloworld-QS-link}[`{helloworld-QS} quickstart`].
+
+* Create the quickstart from scratch.
++
+Use this option to learn about the process of creating applications using Maven.
++
+The following document describes the process of creating the `{helloworld-QS} quickstart` right from configuring the Maven project for the application to deploying the application to {ProductShortname}.
+
+include::proc_creating-a-maven-project-for-a-simple-web-application.adoc[leveloffset=+1]
+
+include::proc_creating-a-servlet-with-cdi.adoc[leveloffset=+1]
+
+////
+include::proc_deploying-an-application-with-a-provisioned-server.adoc[leveloffset=+1]
+include::proc_deploying-an-application-to-a-bare-metal-installation.adoc[leveloffset=+1]
+////

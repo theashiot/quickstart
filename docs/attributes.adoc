@@ -1,0 +1,36 @@
+:ProductName: WildFly Application Server
+:ProductShortName: WildFly
+:ProductRelease: 29
+:ProductVersion: 29.x
+
+//Book Names
+:gettingStartedWithApplicationDevelopment: Getting started with application development
+
+//Cloud
+:cloudPlatform: Kubernetes
+
+////
+Quickstarts arrtibutes
+////
+
+//helloworld
+
+:helloworld-QS: helloworld
+:helloworld-QS-link: https://github.com/wildfly/quickstart/tree/{ProductVersion}
+:helloworld-QS-artifactId: helloworld
+:helloworld-QS-groupId: org.jboss.as.quickstarts
+:helloworld-QS-path: org/jboss/as/quickstarts/{helloworld-QS-artifactId}
+
+////
+End of Quickstarts definition
+////
+
+//Jakarta
+:JEEE: Jakarta EE
+:JEE: {JEEE}
+:JEESupportedVersion: 10
+
+//Plugins
+:maven-plugin: wildfly-maven-plugin
+
+//Maven coordinates

@@ -1,0 +1,39 @@
+:_content-type: PROCEDURE
+
+[id="deploying-an-application-with-a-provisioned-server_{context}"]
+= Deploying an application with a provisioned server
+
+[role="_abstract"]
+{ProductShortname} provides a Maven plugin, `{maven-plugin}`, that you can use to package a custom application server with your application.
+You can deploy the application on the packaged server. 
+This way, you do not require an existing server installation.
+
+
+.Prerequisites
+
+* You have created an application.
+
+.Procedure
+
+. Update the `pom.xml` configuration file to include {maven-plugin}.
++
+[source,xml,indent=0,options="nowrap"]
+----
+<profiles>
+...
+include::quickstart/helloworld/pom.xml[lines=181..232]
+...
+</profiles>
+----
+
+. Deploy the application.
++
+[source,options="nowrap"]
+----
+$ mvn package -Pprovisioned-server
+----
+
+.Verification
+
+* Navigate to the address `http://locahlhost:8080/{helloworld-QS-artifactId}` in a browser.
+

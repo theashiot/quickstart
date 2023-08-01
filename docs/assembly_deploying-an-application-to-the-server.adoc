@@ -1,0 +1,29 @@
+ifdef::context[:parent-context-of-deploying-an-application-to-the-server: {context}]
+
+:_content-type: ASSEMBLY
+
+ifndef::context[]
+[id="deploying-an-application-to-the-server"]
+endif::[]
+ifdef::context[]
+[id="deploying-an-application-to-the-server_{context}"]
+endif::[]
+= Deploying an application to the server
+
+:context: deploying-an-application-to-the-server
+
+[role="_abstract"]
+{ProductName} runs on bare metal, in Docker/Podman, as a bootable jar cloud platforms, and even in Integrated Development Environments (IDE). You can deploy your applications to {ProductShortname} running in any environment.
+
+include::proc_deploying-an-application-to-a-bare-metal-installation.adoc[leveloffset=+1]
+
+include::proc_deploying-an-application-with-a-provisioned-server.adoc[leveloffset=+1]
+
+include::proc_deploying-an-application-to-a-cloud-platform.adoc[leveloffset=+1]
+
+
+//include::con_application-deployment-options.adoc[leveloffset=+1]
+
+ifdef::parent-context-of-deploying-an-application-to-the-server[:context: {parent-context-of-deploying-an-application-to-the-server}]
+ifndef::parent-context-of-deploying-an-application-to-the-server[:!context:]
+

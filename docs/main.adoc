@@ -1,0 +1,16 @@
+include::attributes.adoc[]
+
+:toc:
+:numbered:
+
+= {gettingStartedWithApplicationDevelopment}
+
+include::con_introduction-to-quickstarts.adoc[leveloffset=+1]
+
+//include::con_application-deployment-options.adoc[leveloffset=+1]
+
+include::assembly_creating-a-hello-world-application-with-servlet-and-cdi.adoc[leveloffset=+1]
+
+include::assembly_deploying-an-application-to-the-server.adoc[leveloffset=+1]
+
+include::proc_testing-your-application-with-arquillian-integration-tests.adoc[leveloffset=+1]

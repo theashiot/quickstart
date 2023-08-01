@@ -1,0 +1,75 @@
+:_content-type: PROCEDURE
+
+[id="testing-your-application-with-arquillian-integration-tests_{context}"]
+= Testing your application with Arquillian integration tests
+
+[role="_abstract"]
+Create Arquillian integration tests to verify that the your application runs correctly when deployed to {ProductShortname}. The steps are the same whether you deploy an application to a bare metal {ProductShortname} installation, a provisioned server, or to {ProductShortname} on {cloudPlatform}.
+
+//Add more info about arquillian tests, see https://www.baeldung.com/arquillian 
+
+.Prerequisites
+
+* You have deployed your application to {ProductShortname}.
+
+.Procedure
+
+. Add dependency for Arquillian tests in the dependencies section of `pom.xml`.
++
+[source,xml,options="nowrap"]
+----
+<dependencies>
+...
+include::quickstart/helloworld/pom.xml[lines=152..177,indent=4]
+</dependencies>
+----
+
+. Define a profile for Arquilian tests in the profiles section of `pom.xml`.
++
+[source,xml,options="nowrap"]
+----
+<profiles>
+...
+include::quickstart/helloworld/pom.xml[lines=266..292,indent=4]
+</profiles>
+----
+
+. Create the directory to store the test file.
++
+[source,options="nowrap"]
+----
+$ mkdir -p src/test/java/org/jboss/as/quickstarts/helloworld 
+----
+
+. Create a test file called `HelloWorldServletIT.java`.
++
+[source,java,options="nowrap"]
+----
+include::quickstart/helloworld/src/test/java/org/jboss/as/quickstarts/helloworld/HelloWorldServletIT.java[lines=16..32;37..84] 
+----
+
+. Create a directory `managed` and navigate to the directory.
++
+[source,options="nowrap"]
+----
+$ mkdir managed; cd managed
+----
+
+. Create a test file called `ManagedHelloWorldServlet.java`.
++
+[source,java,options="nowrap"]
+----
+include::quickstart/helloworld/src/test/java/org/jboss/as/quickstarts/helloworld/managed/ManagedHelloWorldServletIT.java[lines=16..25;31..47]
+----
+
+. Run the `verify` goal with the `arq-remote` profile.
++
+[source,options="nowrap"]
+----
+$ mvn verify -Parq-remote
+----
+
+[NOTE]
+====
+You may also use the environment variable `SERVER_HOST` or the system property `server.host` to define the target host of the tests.
+====
