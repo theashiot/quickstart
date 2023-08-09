@@ -2,6 +2,11 @@
 
 :QS-path: {helloworld-QS-path}
 
+:propertiesLines: lines=45..49;51
+:repositoriesLine: lines=53..82
+:pluginRepositoriesLine: lines=83..106
+:dependencyManagentLine: lines=108..119
+
 [id="creating-a-maven-project-for-a-simple-web-application_{context}"]
 = Creating a Maven project for a web application
 
@@ -38,28 +43,28 @@ $ cd {helloworld-QS-artifactId}
 +
 [source,xml,options="nowrap"]
 ----
-include::quickstart/helloworld/pom.xml[lines=45..49;51]
+include::quickstart/helloworld/pom.xml[{propertiesLines}]
 ----
 
 .. Add the following repositories:
 +
 [source,xml,options="nowrap"]
 ----
-include::quickstart/helloworld/pom.xml[lines=53..82]
+include::quickstart/helloworld/pom.xml[{repositoriesLine}]
 ----
 
 .. Add the following plugin repositories:
 +
 [source,xml,options="nowrap"]
 ----
-include::quickstart/helloworld/pom.xml[lines=83..106]
+include::quickstart/helloworld/pom.xml[{pluginRepositoriesLine}]
 ----
 
 .. Add the following dependency management:
 +
 [source,xml,options="nowrap"]
 ----
-include::quickstart/helloworld/pom.xml[lines=108..119]
+include::quickstart/helloworld/pom.xml[{dependencyManagentLine}]
 ----
 
 ////

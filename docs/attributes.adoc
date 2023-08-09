@@ -35,3 +35,4 @@ End of Quickstarts definition
 
 //Maven coordinates
 :GAV: `groupID:artifactID:Version`
+:attribute: attribute
