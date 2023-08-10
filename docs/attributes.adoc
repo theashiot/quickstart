@@ -36,3 +36,26 @@ End of Quickstarts definition
 //Maven coordinates
 :GAV: `groupID:artifactID:Version`
 :attribute: attribute
+
+
+////
+Line numbers
+////
+//Creating maven project line numbers
+:propertiesLines: lines=45..49;51
+:repositoriesLine: lines=53..82
+:pluginRepositoriesLine: lines=83..106
+:dependencyManagentLine: lines=108..119
+
+
+//Creating a Servlet with CDI
+:dependenciesLines: lines=121..143;178,indent=0
+
+
+//Deploying application to Kubernetes
+:mavenPluginLinesCP: lines=233..265
+//Deploying application bootable jar
+:mavenPluginLinesBJ: lines=181..232
+//Testing
+:arquillianDependencyLines: lines=152..177,indent=4
+:arquillianProfileLines: lines=266..292,indent=4

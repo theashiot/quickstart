@@ -21,7 +21,7 @@ This way, you do not require an existing server installation.
 ----
 <profiles>
 ...
-include::quickstart/helloworld/pom.xml[lines=181..232]
+include::quickstart/helloworld/pom.xml[{mavenPluginLinesBJ}]
 ...
 </profiles>
 ----

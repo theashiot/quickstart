@@ -13,10 +13,11 @@ In this procedure, __<application_home>__ refers to the directory that contains 
 .Prerequisites
 
 * You have created a Maven project.
-+
-For more information, see xref:creating-a-maven-project-for-a-simple-web-application_creating-a-hello-world-application-from-scratch[Creating a Maven project for a simple web application].
+//+
+//For more information, see xref:creating-a-maven-project-for-a-simple-web-application_creating-a-hello-world-application-from-scratch[Creating a Maven project for a simple web application].
 
-* {ProductShortname} is running.
+* {ProductShortName} is running.
+
 
 .Procedure
 
@@ -24,10 +25,10 @@ For more information, see xref:creating-a-maven-project-for-a-simple-web-applica
 +
 [source,xml,options="nowrap"]
 ----
-include::quickstart/helloworld/pom.xml[lines=121..143;178,indent=0]
+include::quickstart/helloworld/pom.xml[{dependenciesLines}]
 ----
 +
-include::frag_creating-simple-web-application-common.adoc[l]
+include::frag_creating-simple-web-application-common.adoc[]
 
 . Create the Servlet `HelloWorldServlet.java`.
 +

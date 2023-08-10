@@ -19,7 +19,7 @@ You can use the `{maven-plugin}` to deploy your application to {cloudPlatform}.
 ----
 <profiles>
 ...
-include::quickstart/helloworld/pom.xml[lines=233..265]
+include::quickstart/helloworld/pom.xml[{mavenPluginLinesCP}]
 ...
 </profiles>
 ----

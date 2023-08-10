@@ -20,7 +20,7 @@ Create Arquillian integration tests to verify that the your application runs cor
 ----
 <dependencies>
 ...
-include::quickstart/helloworld/pom.xml[lines=152..177,indent=4]
+include::quickstart/helloworld/pom.xml[{arquillianDependencyLines}]
 </dependencies>
 ----
 
@@ -30,7 +30,7 @@ include::quickstart/helloworld/pom.xml[lines=152..177,indent=4]
 ----
 <profiles>
 ...
-include::quickstart/helloworld/pom.xml[lines=266..292,indent=4]
+include::quickstart/helloworld/pom.xml[{arquillianProfileLines}]
 </profiles>
 ----
 
