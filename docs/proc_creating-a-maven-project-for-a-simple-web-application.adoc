@@ -2,15 +2,12 @@
 
 :QS-path: {helloworld-QS-path}
 
-:propertiesLines: lines=45..49;51
-:repositoriesLine: lines=53..82
-:pluginRepositoriesLine: lines=83..106
-:dependencyManagentLine: lines=108..119
-
 [id="creating-a-maven-project-for-a-simple-web-application_{context}"]
 = Creating a Maven project for a web application
 
 For creating a web-application, create a Maven project with the required dependencies and the directory structure.
+
+{ProductShotname} Quickstatrs work on {cloudPlatform}.
 
 .Prerequisites
 
