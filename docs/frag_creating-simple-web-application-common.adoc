@@ -4,8 +4,9 @@ This is a common file shared between Quickstarts docs.
 The value for QS-path is set in the Quickstart procedure
 that includes this file.
 ////
+. Navigate to the __<application_home>__ directory.
 
-. Create a directory to store the Java files. The path in the command below is relative to __<application_home>__.
+. Create a directory to store the Java files.
 +
 [source,options="nowrap",subs=attributes]
 ----

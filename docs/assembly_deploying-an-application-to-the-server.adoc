@@ -13,11 +13,43 @@ endif::[]
 :context: deploying-an-application-to-the-server
 
 [role="_abstract"]
-{ProductName} runs on bare metal, in Docker/Podman, as a bootable jar cloud platforms, and even in Integrated Development Environments (IDE). You can deploy your applications to {ProductShortname} running in any environment.
+{ProductName} runs on bare metal, in Docker/Podman, as a bootable JAR on bare metal or cloud platforms like Kubernetes, and even in Integrated Development Environments (IDE). You can deploy your applications to {ProductShortname} running in any of the environments.
+
+[options="header",cols="2,2,2,2"]
+|===
+|Platform   |Deployment type   |Reason   |Link   
+//----------------------
+.2+|Baremetal   
+|Bootable JAR    
+|No need to install server   
+|xref:deploying-an-application-with-a-provisioned-server_deploying-an-application-to-the-server[deploying-an-application-with-a-provisioned-server_deploying-an-application-to-the-server]
+|On an installed server    
+|You already have a server installed   
+|xref:deploying-an-application-to-a-bare-metal-installation_deploying-an-application-to-the-server[Deploying an application to a bare metal installation]
+
+   
+|Kubernetes   |{nbsp}   |{nbsp}   |xref:deploying-an-application-to-a-cloud-platform_deploying-an-application-to-the-server[Deploying an application to Kubernetes]   
+|===
+
+
+
+
+To deploy your application to {ProductShortName} on bare metal, you can choose one of the following options:
+
+* By building a {ProductShortName} bootable JAR.
++
+A {ProductShortName} bootable JAR contains both the {ProductShortName} server and the application.
++
+For more information, see xref:deploying-an-application-with-a-provisioned-server_deploying-an-application-to-the-server[deploying-an-application-with-a-provisioned-server_deploying-an-application-to-the-server]
+
+* By deploying it to {ProductShortName} installed on bare metal.
++
+For more information, see xref:deploying-an-application-to-a-bare-metal-installation_deploying-an-application-to-the-server[Deploying an application to a bare metal installation]
+
+include::proc_deploying-an-application-with-a-provisioned-server.adoc[leveloffset=+1]
 
 include::proc_deploying-an-application-to-a-bare-metal-installation.adoc[leveloffset=+1]
 
-include::proc_deploying-an-application-with-a-provisioned-server.adoc[leveloffset=+1]
 
 include::proc_deploying-an-application-to-a-cloud-platform.adoc[leveloffset=+1]
 

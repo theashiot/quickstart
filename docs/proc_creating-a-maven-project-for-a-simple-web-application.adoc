@@ -5,9 +5,7 @@
 [id="creating-a-maven-project-for-a-simple-web-application_{context}"]
 = Creating a Maven project for a web application
 
-For creating a web-application, create a Maven project with the required dependencies and the directory structure.
-
-{ProductShotname} Quickstatrs work on {cloudPlatform}.
+Create a Maven project by using the `maven-archetype-webapp` archetype to get started with building web-applications for {ProductShortname} deployment. Maven provides different archetypes to create projects based on templates specific to different project types. The `maven-archetype-webapp` creates a project with the structure required to develop simple web-applications.
 
 .Prerequisites
 
@@ -36,28 +34,37 @@ $ cd {helloworld-QS-artifactId}
 
 . Update the content of the generated `pom.xml`.
 
-.. Set the following properties:
+.. Remove the content between the `<project ...>` element  and its corresponding closing `</project>` tag.
++
+Add the following elements between the `<project>` and `</project>` tags.
+
+.. Define the following properties for the project. You can use the values defined in the __<property>__ element throughout the project by using the ${__<property>__} syntax.
 +
 [source,xml,options="nowrap"]
 ----
 include::quickstart/helloworld/pom.xml[{propertiesLines}]
 ----
++
+** `<version.server.bom>`: Define the {ProductShortname} BOM version to use.
+** `<version.server>`: Define the {ProductShortname} release version for which the application is being created.
+**  `<version.wildfly.maven.plugin>`: Define the version for {ProcuctShortname} Maven plugin.
 
-.. Add the following repositories:
+.. Define the repositories in which Maven looks for artifacts to download in these repositories.
 +
 [source,xml,options="nowrap"]
 ----
 include::quickstart/helloworld/pom.xml[{repositoriesLine}]
 ----
++
 
-.. Add the following plugin repositories:
+.. Define the repositories in which Maven looks for plug-ins to download in these repositories.
 +
 [source,xml,options="nowrap"]
 ----
 include::quickstart/helloworld/pom.xml[{pluginRepositoriesLine}]
 ----
 
-.. Add the following dependency management:
+.. Specify the {ProductShortname} Jakarta EE spec BOM to control the versions of runtime Maven dependencies. When you specify a BOM in the `<dependency-management>` section, you do not need to specify the versions of the provided Maven dependencies.
 +
 [source,xml,options="nowrap"]
 ----
@@ -75,7 +82,7 @@ include::quickstart/helloworld/pom.xml[lines=121..143;178]
 
 .Verification
 
-* In the application root directory, enter the following command:
+* In the application root directory, enter the following command to download the Maven dependencies:
 +
 [source,options="nowrap"]
 ----

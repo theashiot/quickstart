@@ -8,15 +8,13 @@
 [role="_abstract"]
 Create a web application containing a servlet that returns "Hello world!" when accessed.
 
-In this procedure, __<application_home>__ refers to the directory that contains the  `pom.xml` configuration file for the application.
+In this procedure, __<application_home>__ refers to the directory that contains the `pom.xml` configuration file for the application.
 
 .Prerequisites
 
 * You have created a Maven project.
 //+
 //For more information, see xref:creating-a-maven-project-for-a-simple-web-application_creating-a-hello-world-application-from-scratch[Creating a Maven project for a simple web application].
-
-* {ProductShortName} is running.
 
 
 .Procedure
@@ -30,22 +28,32 @@ include::quickstart/helloworld/pom.xml[{dependenciesLines}]
 +
 include::frag_creating-simple-web-application-common.adoc[]
 
-. Create the Servlet `HelloWorldServlet.java`.
-+
-[source,java,options="nowrap"]
-----
-include::quickstart/helloworld/src/main/java/org/jboss/as/quickstarts/helloworld/HelloWorldServlet.java[lines=17..37;41..63]
-----
-
-. Create a CDI service that return "Hello " with the value of the name. 
-
+. Create a CDI service that return "Hello " with the value of the String supplied to it.
 +
 [source,java,options="nowrap"]
 ----
 include::quickstart/helloworld/src/main/java/org/jboss/as/quickstarts/helloworld/HelloService.java[lines=17..20;24..31]
 ----
 
-. Compile your application with the following command in __<application_home>__:
+. Create the Servlet `HelloWorldServlet.java` that invokes the CDI service.
++
+[source,java,options="nowrap"]
+----
+include::quickstart/helloworld/src/main/java/org/jboss/as/quickstarts/helloworld/HelloWorldServlet.java[lines=17..37;41..63]
+----
++
+* The `@WebServlet("/HelloWorld")` annotation tells {ProductShortname} the following information:
+
+** This class is a servlet.
+** Make the servlet available at the URL "_<application_URL>_/HelloWorld".
++
+For example, if {ProductShortname} is running on the localhost and using the default HTTP port for HTTP requests, the URL is `http://localhost:8080/HelloWorld`.
+
+* The `@Inject` annotation invokes the CDI service.
+
+. Navigate to the __<application_home>__ directory.
+
+. Compile and package the application as a web archive (WAR) with the following command:
 +
 [source,options="nowrap"]
 ----
@@ -61,8 +69,10 @@ $ mvn package
 [INFO] ------------------------------------------------------------------------
 ...
 ----
++
 
-After you have compiled your application, you can deploy it. For more information, see xref:deploying-an-application-to-the-server_creating-a-hello-world-application-with-servlet-and-cdi[Deploying an application to the server]
+
+After you have compiled and packaged your application, you can deploy it. For more information, see xref:deploying-an-application-to-the-server_creating-a-hello-world-application-with-servlet-and-cdi[Deploying an application to the server]
 
 ////
 [role="_additional-resources"]
