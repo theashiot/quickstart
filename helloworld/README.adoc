@@ -507,6 +507,8 @@ endif::[]
 === Access the Application
 The application will be running at the following URL: http://localhost:8080/{artifactId}/.
 
+small change
+
 // Server Distribution Testing
 :leveloffset: +2
 
