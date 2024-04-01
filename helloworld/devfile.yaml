@@ -1,0 +1,84 @@
+schemaVersion: 2.2.0
+metadata:
+  name: helloworld
+  version: 2.0.0
+  displayName: WildFly Hello World
+  description: Example WildFly Hello World QS
+  icon: https://design.jboss.org/wildfly/logo/final/wildfly_logomark.svg
+  tags: ['Java', 'WildFly']
+  projectType: 'wildfly'
+  language: 'java'
+variables:
+  imageRegistry: 'quay.io'
+starterProjects:
+  - name: getting-started
+    description: WildFly Getting Started
+    git:
+      checkoutFrom:
+        remote: quickstart
+        revision: exdev
+      remotes:
+        wildfly-devfile-examples: https://github.com/theashiot/quickstart.git
+components:
+  - name: tools
+    container:
+      image:  quay.io/devfile/universal-developer-image:ubi8-c0b5f15
+     #image: registry.redhat.io/devspaces/udi-rhel8:3.7
+      memoryLimit: 1512Mi
+      mountSources: true
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+      env:
+        - name: JAVA_OPTS
+          value: '-Djava.security.egd=file:/dev/urandom -Djboss.host.name=localhost'
+        - name: DEBUG_PORT
+          value: '5005'
+        - name: NODE_NAME
+          value: 'getting-started'
+        - name: IMAGE_REGISTRY
+          value: '{{imageRegistry}}'
+          #value: 'image-registry.openshift-image-registry.svc:5000'
+        - name: IMAGE
+          value: 'getting-started'
+      endpoints:
+        - name: debug
+          exposure: internal
+          protocol: tcp
+          targetPort: 5005
+        - name: 'http'
+          protocol: http
+          targetPort: 8080
+          exposure: public
+        - name: 'management'
+          targetPort: 9990
+          protocol: http
+          exposure: internal
+        - name: 'transaction'
+          protocol: tcp
+          targetPort: 4172
+          exposure: internal
+  - name: m2
+    volume:
+      size: 3Gi
+commands:
+  - id: package
+    exec:
+      label: "InnerLoop 01 - Build the application."
+      component: tools
+      commandLine: mvn clean verify
+      workingDir: ${PROJECT_SOURCE}
+      hotReloadCapable: true
+      group:
+        kind: build
+        isDefault: true
+  - id: run
+    exec:
+      label: "InnerLoop 02 - Run the application."
+      component: tools
+      commandLine: mvn -Dwildfly.javaOpts="-Djboss.host.name=${NODE_NAME}" -Dmaven.test.skip=true clean package org.wildfly.plugins:wildfly-maven-plugin:deploy
+      workingDir: ${PROJECT_SOURCE}
+      hotReloadCapable: true
+      group:
+        kind: run
+        isDefault: true
