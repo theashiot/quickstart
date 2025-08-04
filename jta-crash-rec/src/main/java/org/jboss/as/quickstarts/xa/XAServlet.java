@@ -38,6 +38,88 @@ import java.io.PrintWriter;
  * @author Michael Musgrove
  *
  */
+
+/*
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
+    <xa-datasource jndi-name="java:jboss/datasources/JTACrashRecQuickstartDS" pool-name="JTACrashRecQuickstart" enabled="true">
+        <xa-datasource-property name="URL">
+            jdbc:h2:file:~/jta-crash-rec-quickstart;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+        </xa-datasource-property>
+        <driver>h2</driver>
+        <xa-pool>
+            <is-same-rm-override>false</is-same-rm-override>
+            <interleaving/>
+            <pad-xid>false</pad-xid>
+            <wrap-xa-resource>true</wrap-xa-resource>
+        </xa-pool>
+        <security>
+            <user-name>sa</user-name>
+            <password>sa</password>
+        </security>
+        <validation>
+            <validate-on-match>false</validate-on-match>
+            <background-validation>false</background-validation>
+            <background-validation-millis>0</background-validation-millis>
+        </validation>
+        <statement>
+            <prepared-statement-cache-size>0</prepared-statement-cache-size>
+        </statement>
+        <recovery>
+            <recover-credential>
+                <user-name>sa</user-name>
+                <password>sa</password>
+            </recover-credential>
+        </recovery>
+    </xa-datasource>
+</datasources>
+
+
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
+    <xa-datasource jndi-name="java:jndi" pool-name="qs-name" enabled="true">
+        <xa-datasource-property name="URL">
+            jdbc:h2:file:~/file-name;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+        </xa-datasource-property>
+        <driver>h2</driver>
+        <xa-pool>
+            <is-same-rm-override>false</is-same-rm-override>
+            <interleaving/>
+            <pad-xid>false</pad-xid>
+            <wrap-xa-resource>true</wrap-xa-resource>
+        </xa-pool>
+        <security>
+            <user-name>sa</user-name>
+            <password>sa</password>
+        </security>
+        <validation>
+            <validate-on-match>false</validate-on-match>
+            <background-validation>false</background-validation>
+            <background-validation-millis>0</background-validation-millis>
+        </validation>
+        <statement>
+            <prepared-statement-cache-size>0</prepared-statement-cache-size>
+        </statement>
+        <recovery>
+            <recover-credential>
+                <user-name>sa</user-name>
+                <password>sa</password>
+            </recover-credential>
+        </recovery>
+    </xa-datasource>
+</datasources>
+
+
+
+@DataSourceDefinition(name="java:jboss/datasources/JTACrashRecQuickstartDS",
+className = "org.h2.jdbcx.JdbcDataSource",
+url="jdbc:h2:mem:tasks-jsf-quickstart;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1",
+user="sa",
+password="sa")
+
+*/ 
 @SuppressWarnings("serial")
 @WebServlet("/XA")
 public class XAServlet extends HttpServlet {

@@ -1394,7 +1394,7 @@ ifndef::useHelmChartDir[]
 ----
 build:
   uri: https://github.com/wildfly/quickstart.git
-  ref: main
+  ref: 37.x
   contextDir: microprofile-health
 deploy:
   replicas: 1
@@ -1874,7 +1874,7 @@ ifndef::useHelmChartDir[]
 ----
 build:
   uri: https://github.com/wildfly/quickstart.git
-  ref: main
+  ref: 37.x
   contextDir: microprofile-health
 deploy:
   replicas: 1
