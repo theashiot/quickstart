@@ -973,7 +973,7 @@ ifndef::useHelmChartDir[]
 ----
 build:
   uri: https://github.com/wildfly/quickstart.git
-  ref: 41.x
+  ref: main
   contextDir: bmt
 deploy:
   replicas: 1
@@ -1371,7 +1371,7 @@ ifndef::useHelmChartDir[]
 ----
 build:
   uri: https://github.com/wildfly/quickstart.git
-  ref: 41.x
+  ref: main
   contextDir: bmt
 deploy:
   replicas: 1
