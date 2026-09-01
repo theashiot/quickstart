@@ -199,7 +199,7 @@
                     <archive>
                         <manifestEntries>
                             <!-- specifies that the deployment depends on server module com.h2database.h2 -->
-                            <Dependencies>com.h2database.h2</Dependencies>
+                            <Dependencies>org.postgresql</Dependencies>
                         </manifestEntries>
                     </archive>
                 </configuration>
