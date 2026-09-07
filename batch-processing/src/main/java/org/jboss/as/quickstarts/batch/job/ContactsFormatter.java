@@ -44,6 +44,7 @@ public class ContactsFormatter implements ItemProcessor {
         String newPhone = phone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1)-$2-$3");
         c.setPhone(newPhone);
         log.info(String.format("Register #%d - Changing name %s -> %s | phone  %s -> %s", c.getId(), name, newName, phone, newPhone));
+        Thread.sleep(2000);
         return c;
     }
 
